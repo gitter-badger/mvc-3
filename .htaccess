@@ -1,0 +1,28 @@
+#
+# Url amigavel
+#
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+#
+# Não lista o diretório
+#
+Options -Indexes
+IndexIgnore *
+#
+# Restringe acesso a extensão
+#
+<Files ~ "\.tpl$">
+    Order allow,deny
+    Deny from all
+</Files>
+#
+# método DEFLATE para a compressão dos arquivos
+#
+<Files *.css>
+    SetOutputFilter DEFLATE
+</Files>
+<Files *.js>
+    SetOutputFilter DEFLATE
+</Files>
